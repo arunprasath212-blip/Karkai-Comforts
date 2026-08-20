@@ -255,35 +255,51 @@
     }
 
     function sendWhatsAppOrder() {
-      if (!orderState.fabric || !orderState.garment || !orderState.neck || !orderState.sleeve) {
-        alert("Please make sure to choose a Fabric, Garment Style, Neck Design, and Sleeve Pattern.");
-        return;
-      }
+  const name = document.getElementById('customerName').value.trim();
+  const phone = document.getElementById('customerPhone').value.trim();
+  const address = document.getElementById('customerAddress').value.trim();
 
-      const notes = document.getElementById('customNotes').value;
-      const pocketInfo = orderState.pocket ? `${orderState.pocket.name} (${orderState.pocket.price ? '₹' + orderState.pocket.price : 'No Extra Charge'})` : 'No Pocket';
-      
-      let total = orderState.fabric.price + 
-                  orderState.garment.price + 
-                  orderState.neck.price + 
-                  orderState.sleeve.price + 
-                  (orderState.pocket ? orderState.pocket.price : 0);
+  // Validate Customer Inputs
+  if (!name || !phone || !address) {
+    alert("Please fill in your Name, Phone Number, and Delivery Address before placing the order.");
+    return;
+  }
 
-      const message = `*NEW STITCHING ORDER - கற்கை Comforts*\n` +
-        `-----------------------------------\n` +
-        `• *Fabric:* ${orderState.fabric.name} (₹${orderState.fabric.price})\n` +
-        `• *Style:* ${orderState.garment.name} (₹${orderState.garment.price})\n` +
-        `• *Neck Pattern:* ${orderState.neck.name} (${orderState.neck.price ? '₹' + orderState.neck.price : 'Included'})\n` +
-        `• *Sleeve Pattern:* ${orderState.sleeve.name} (${orderState.sleeve.price ? '₹' + orderState.sleeve.price : 'Included'})\n` +
-        `• *Pocket:* ${pocketInfo}\n` +
-        `• *Measurements / Notes:* ${notes ? notes : 'None'}\n` +
-        `-----------------------------------\n` +
-        `*Estimated Total:* ₹${total}`;
+  // Validate Garment Options
+  if (!orderState.fabric || !orderState.garment || !orderState.neck || !orderState.sleeve) {
+    alert("Please make sure to choose a Fabric, Garment Style, Neck Design, and Sleeve Pattern.");
+    return;
+  }
 
-      const encodedMessage = encodeURIComponent(message);
-      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`, '_blank');
-    }
+  const notes = document.getElementById('customNotes').value.trim();
+  const pocketInfo = orderState.pocket ? `${orderState.pocket.name} (${orderState.pocket.price ? '₹' + orderState.pocket.price : 'No Extra Charge'})` : 'No Pocket';
+  
+  let total = orderState.fabric.price + 
+              orderState.garment.price + 
+              orderState.neck.price + 
+              orderState.sleeve.price + 
+              (orderState.pocket ? orderState.pocket.price : 0);
 
+  const message = `*NEW STITCHING ORDER - Karkai Comforts*\n` +
+    `-----------------------------------\n` +
+    `*CUSTOMER DETAILS*\n` +
+    `• *Name:* ${name}\n` +
+    `• *Phone:* ${phone}\n` +
+    `• *Address:* ${address}\n` +
+    `-----------------------------------\n` +
+    `*ORDER SPECIFICATIONS*\n` +
+    `• *Fabric:* ${orderState.fabric.name} (₹${orderState.fabric.price})\n` +
+    `• *Style:* ${orderState.garment.name} (₹${orderState.garment.price})\n` +
+    `• *Neck Pattern:* ${orderState.neck.name} (${orderState.neck.price ? '₹' + orderState.neck.price : 'Included'})\n` +
+    `• *Sleeve Pattern:* ${orderState.sleeve.name} (${orderState.sleeve.price ? '₹' + orderState.sleeve.price : 'Included'})\n` +
+    `• *Pocket:* ${pocketInfo}\n` +
+    `• *Measurements / Notes:* ${notes ? notes : 'None'}\n` +
+    `-----------------------------------\n` +
+    `*Estimated Total:* ₹${total}`;
+
+  const encodedMessage = encodeURIComponent(message);
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`, '_blank');
+}
     renderFabrics();
   </script>
 </body>
