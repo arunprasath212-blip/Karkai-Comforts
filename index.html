@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>கற்கை Comforts - Custom Stitching Studio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .banner-container {
+      background-color: #f7f4f0; /* Matches natural canvas background of header artwork */
+    }
+    .banner-img {
+      max-height: 280px;
+      width: 100%;
+      object-fit: contain;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans">
+
+  <!-- Graphic Hero Header (Clean Banner without Overlay Box) -->
+  <header class="banner-container shadow-sm border-b border-slate-200 py-3 px-4">
+    <div class="max-w-6xl mx-auto flex justify-center items-center">
+      <img 
+        src="images/brand_header.jpg" 
+        alt="கற்கை Comforts - Women's Wear & Custom Stitching" 
+        class="banner-img"
+      />
+    </div>
+  </header>
+
+  <!-- Hero Section (Bespoke Nightwear & Maxis Card Kept Intact) -->
+  <section class="max-w-6xl mx-auto px-4 py-10">
+    <div class="bg-rose-100 rounded-2xl p-8 text-center md:text-left md:flex items-center justify-between">
+      <div class="mb-6 md:mb-0 max-w-lg">
+        <h2 class="text-3xl font-extrabold text-rose-900 mb-2">Bespoke Nightwear & Maxis</h2>
+        <p class="text-slate-700">Select premium fabrics from our catalog, choose your custom necklines and sleeve styles, and send your request straight to our master tailors.</p>
+      </div>
+      <a href="#catalog" class="inline-block bg-rose-600 text-white px-6 py-3 rounded-xl font-bold shadow-lg hover:bg-rose-700 transition">Browse Materials</a>
+    </div>
+  </section>
+
+  <main class="max-w-6xl mx-auto px-4 pb-16 space-y-12">
+    
+    <!-- Material Catalog Section -->
+    <section id="catalog">
+      <h3 class="text-2xl font-bold text-slate-900 mb-6 border-b pb-2">1. Select Your Fabric</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6" id="fabricGrid">
+        <!-- Dynamic Fabrics -->
+      </div>
+    </section>
+
+    <!-- Customization Studio Section -->
+    <section id="customizer" class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200">
+      <h3 class="text-2xl font-bold text-slate-900 mb-6 border-b pb-2">2. Customize Your Stitching</h3>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        
+        <!-- Customization Options -->
+        <div class="space-y-6">
+          
+          <!-- Selected Material Summary -->
+          <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between">
+            <div>
+              <span class="text-xs uppercase text-slate-500 font-bold block">Selected Fabric</span>
+              <span id="selectedFabricName" class="text-lg font-bold text-rose-800">Please pick a material above</span>
+            </div>
+            <span id="selectedFabricPrice" class="text-lg font-bold text-slate-700">₹0</span>
+          </div>
+
+          <!-- Garment Type -->
+          <div>
+            <label class="block font-bold text-slate-700 mb-2">Garment Style</label>
+            <div class="grid grid-cols-2 gap-4">
+              <button onclick="selectOption('garment', 'Nighty', 100)" class="option-btn garment-btn border-2 border-slate-200 p-3 rounded-xl font-medium text-center hover:border-rose-400">Nighty (+₹100)</button>
+              <button onclick="selectOption('garment', 'Maxi Dress', 150)" class="option-btn garment-btn border-2 border-slate-200 p-3 rounded-xl font-medium text-center hover:border-rose-400">Maxi Dress (+₹150)</button>
+            </div>
+          </div>
+
+          <!-- Neck Design -->
+          <div>
+            <label class="block font-bold text-slate-700 mb-2">Neck Pattern</label>
+            <div class="grid grid-cols-3 gap-3">
+              <button onclick="selectOption('neck', 'Round Neck', 0)" class="option-btn neck-btn border-2 border-slate-200 p-2 rounded-xl text-sm font-medium hover:border-rose-400">Round Neck</button>
+              <button onclick="selectOption('neck', 'V-Neck', 0)" class="option-btn neck-btn border-2 border-slate-200 p-2 rounded-xl text-sm font-medium hover:border-rose-400">V-Neck</button>
+              <button onclick="selectOption('neck', 'Square Neck', 0)" class="option-btn neck-btn border-2 border-slate-200 p-2 rounded-xl text-sm font-medium hover:border-rose-400">Square Neck</button>
+              <button onclick="selectOption('neck', 'Piping Neck', 30)" class="option-btn neck-btn border-2 border-slate-200 p-2 rounded-xl text-sm font-medium hover:border-rose-400">Piping (+₹30)</button>
+              <button onclick="selectOption('neck', 'Zip/Front Open', 50)" class="option-btn neck-btn border-2 border-slate-200 p-2 rounded-xl text-sm font-medium hover:border-rose-400">Zip Open (+₹50)</button>
+            </div>
+          </div>
+
+          <!-- Sleeve Design -->
+          <div>
+            <label class="block font-bold text-slate-700 mb-2">Sleeve Pattern</label>
+            <div class="grid grid-cols-3 gap-3">
+              <button onclick="selectOption('sleeve', 'Short Sleeves', 0)" class="option-btn sleeve-btn border-2 border-slate-200 p-2 rounded-xl text-sm font-medium hover:border-rose-400">Short</button>
+              <button onclick="selectOption('sleeve', '3/4th Sleeves', 20)" class="option-btn sleeve-btn border-2 border-slate-200 p-2 rounded-xl text-sm font-medium hover:border-rose-400">3/4th (+₹20)</button>
+              <button onclick="selectOption('sleeve', 'Full Sleeves', 40)" class="option-btn sleeve-btn border-2 border-slate-200 p-2 rounded-xl text-sm font-medium hover:border-rose-400">Full Sleeves (+₹40)</button>
+              <button onclick="selectOption('sleeve', 'Butterfly Sleeves', 50)" class="option-btn sleeve-btn border-2 border-slate-200 p-2 rounded-xl text-sm font-medium hover:border-rose-400">Butterfly (+₹50)</button>
+              <button onclick="selectOption('sleeve', 'Sleeveless', 0)" class="option-btn sleeve-btn border-2 border-slate-200 p-2 rounded-xl text-sm font-medium hover:border-rose-400">Sleeveless</button>
+            </div>
+          </div>
+            
+          <!-- Pocket Options -->
+          <div>
+            <label class="block font-bold text-slate-700 mb-2">Pocket</label>
+            <div class="grid grid-cols-2 gap-3">
+              <button onclick="selectOption('pocket', 'No Pocket', 0)" class="option-btn pocket-btn border-2 border-slate-200 p-2 rounded-xl text-sm font-medium hover:border-rose-400">No Pocket</button>
+              <button onclick="selectOption('pocket', 'Side Pocket', 40)" class="option-btn pocket-btn border-2 border-slate-200 p-2 rounded-xl text-sm font-medium hover:border-rose-400">Side Pocket (+₹40)</button>
+            </div>
+          </div>
+
+          <!-- Extra Notes -->
+          <div>
+            <label class="block font-bold text-slate-700 mb-2">Custom Measurements / Notes</label>
+            <textarea id="customNotes" rows="3" placeholder="Provide chest size, length, pocket preference, or special requests..." class="w-full border border-slate-300 rounded-xl p-3 focus:ring-2 focus:ring-rose-500 focus:outline-none"></textarea>
+          </div>
+
+        </div>
+
+        <!-- Order Summary -->
+        <div class="bg-rose-50 border border-rose-100 rounded-2xl p-6 flex flex-col justify-between">
+          <div>
+            <h4 class="text-xl font-bold text-rose-900 mb-4">Design Summary</h4>
+            <div class="space-y-3 text-sm text-slate-700">
+              <div class="flex justify-between border-b border-rose-200 pb-2">
+                <span>Material:</span>
+                <span id="summaryFabric" class="font-semibold text-slate-900">None selected</span>
+              </div>
+              <div class="flex justify-between border-b border-rose-200 pb-2">
+                <span>Garment Style:</span>
+                <span id="summaryGarment" class="font-semibold text-slate-900">Not selected</span>
+              </div>
+              <div class="flex justify-between border-b border-rose-200 pb-2">
+                <span>Neck Design:</span>
+                <span id="summaryNeck" class="font-semibold text-slate-900">Not selected</span>
+              </div>
+              <div class="flex justify-between border-b border-rose-200 pb-2">
+                <span>Sleeve Pattern:</span>
+                <span id="summarySleeve" class="font-semibold text-slate-900">Not selected</span>
+              </div>
+              <div class="flex justify-between border-b border-rose-200 pb-2">
+                <span>Pocket:</span>
+                <span id="summaryPocket" class="font-semibold text-slate-900">None selected</span>
+              </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-rose-300 flex justify-between items-center">
+              <span class="text-lg font-bold text-slate-800">Estimated Total:</span>
+              <span id="totalPrice" class="text-3xl font-extrabold text-rose-700">₹0</span>
+            </div>
+          </div>
+
+          <button onclick="sendWhatsAppOrder()" class="mt-8 w-full bg-emerald-600 hover:bg-emerald-700 text-white py-4 rounded-xl font-bold text-lg shadow-md transition flex items-center justify-center gap-2">
+            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+            Send Order via WhatsApp
+          </button>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-slate-900 text-slate-400 text-center py-6 border-t border-slate-800 text-sm">
+    <p>© 2026 கற்கை Comforts. Custom Nightwear & Tailoring Services.</p>
+  </footer>
+
+  <script>
+    const WHATSAPP_NUMBER = "918778430367";
+    
+    const fabrics = [
+      { id: 1, name: "Pure Jaipur Cotton - Floral Red", price: 250, image: "images/fabric1.jpg" },
+      { id: 2, name: "Soft Rayon Print - Navy Blue", price: 280, image: "images/cottonred.jpg" },
+      { id: 3, name: "Batik Printed Cotton - Teal", price: 300, image: "images/1000225612.jpg" }
+    ];
+
+    let orderState = {
+      fabric: null,
+      garment: null,
+      neck: null,
+      sleeve: null,
+      pocket: null
+    };
+
+    function renderFabrics() {
+      const grid = document.getElementById('fabricGrid');
+      grid.innerHTML = fabrics.map(item => `
+        <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200 flex flex-col justify-between">
+          <img src="${item.image}" alt="${item.name}" class="h-48 w-full object-cover">
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <h4 class="font-bold text-slate-800">${item.name}</h4>
+              <p class="text-rose-600 font-semibold mt-1">₹${item.price} / material</p>
+            </div>
+            <button onclick="selectFabric(${item.id})" class="mt-4 w-full bg-slate-900 text-white py-2 rounded-lg font-medium hover:bg-rose-700 transition">Select Material</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function selectFabric(id) {
+      const selected = fabrics.find(f => f.id === id);
+      orderState.fabric = selected;
+      document.getElementById('selectedFabricName').innerText = selected.name;
+      document.getElementById('selectedFabricPrice').innerText = `₹${selected.price}`;
+      document.getElementById('summaryFabric').innerText = `${selected.name} (₹${selected.price})`;
+      
+      document.getElementById('customizer').scrollIntoView({ behavior: 'smooth' });
+      calculateTotal();
+    }
+
+    function selectOption(type, name, price) {
+      orderState[type] = { name, price };
+      
+      document.querySelectorAll(`.${type}-btn`).forEach(btn => {
+        btn.classList.remove('border-rose-600', 'bg-rose-50', 'text-rose-800');
+        if (btn.innerText.includes(name)) {
+          btn.classList.add('border-rose-600', 'bg-rose-50', 'text-rose-800');
+        }
+      });
+
+      document.getElementById(`summary${capitalize(type)}`).innerText = `${name} ${price > 0 ? `(+₹${price})` : ''}`;
+      calculateTotal();
+    }
+
+    function calculateTotal() {
+      let total = 0;
+      if (orderState.fabric) total += orderState.fabric.price;
+      if (orderState.garment) total += orderState.garment.price;
+      if (orderState.neck) total += orderState.neck.price;
+      if (orderState.sleeve) total += orderState.sleeve.price;
+      if (orderState.pocket) total += orderState.pocket.price;
+
+      document.getElementById('totalPrice').innerText = `₹${total}`;
+    }
+
+    function capitalize(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    function sendWhatsAppOrder() {
+      if (!orderState.fabric || !orderState.garment || !orderState.neck || !orderState.sleeve) {
+        alert("Please make sure to choose a Fabric, Garment Style, Neck Design, and Sleeve Pattern.");
+        return;
+      }
+
+      const notes = document.getElementById('customNotes').value;
+      const pocketInfo = orderState.pocket ? `${orderState.pocket.name} (${orderState.pocket.price ? '₹' + orderState.pocket.price : 'No Extra Charge'})` : 'No Pocket';
+      
+      let total = orderState.fabric.price + 
+                  orderState.garment.price + 
+                  orderState.neck.price + 
+                  orderState.sleeve.price + 
+                  (orderState.pocket ? orderState.pocket.price : 0);
+
+      const message = `*NEW STITCHING ORDER - கற்கை Comforts*\n` +
+        `-----------------------------------\n` +
+        `• *Fabric:* ${orderState.fabric.name} (₹${orderState.fabric.price})\n` +
+        `• *Style:* ${orderState.garment.name} (₹${orderState.garment.price})\n` +
+        `• *Neck Pattern:* ${orderState.neck.name} (${orderState.neck.price ? '₹' + orderState.neck.price : 'Included'})\n` +
+        `• *Sleeve Pattern:* ${orderState.sleeve.name} (${orderState.sleeve.price ? '₹' + orderState.sleeve.price : 'Included'})\n` +
+        `• *Pocket:* ${pocketInfo}\n` +
+        `• *Measurements / Notes:* ${notes ? notes : 'None'}\n` +
+        `-----------------------------------\n` +
+        `*Estimated Total:* ₹${total}`;
+
+      const encodedMessage = encodeURIComponent(message);
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`, '_blank');
+    }
+
+    renderFabrics();
+  </script>
+</body>
+</html>
